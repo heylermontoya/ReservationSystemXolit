@@ -58,6 +58,7 @@ El **BackEnd** se construyó usando **.NET 8**, aplicando la **arquitectura hexa
 ### Capas del BackEnd
 
 - **API**: Contiene los controladores y endpoints de la aplicación.
+- **Api.Tests**: En esta capa se encuentran todas las pruebas de integración, realizadas a la capa de Api.
 - **Application**: Orquesta los servicios de dominio como Commands, Queries y Handlers.
 - **Infrastructure**: Implementaciones concretas de los adaptadores, comunicación con tecnologías externas y persistencia de datos.
 - **Domain**: Lógica de negocio, incluyendo entidades, objetos de valor, reglas de negocio, puertos, comandos y consultas.
@@ -127,6 +128,7 @@ Para correr el **BackEnd** en **.NET 8**, sigue estos pasos:
     ```bash
     dotnet ef database update -s ..\RESERVATION_SYSTEM.Api\RESERVATION_SYSTEM.Api.csproj
     ```
+    d)  La migración aplicada incluye el esquema de la base de datos con las relaciones definidas entre las tablas. Además, contiene datos semilla que proporcionan información inicial, como usuarios predeterminados de la aplicación y espacios disponibles para reservar. El sistema está diseñado para permitir la creación, edición y eliminación de usuarios y espacios adicionales según las necesidades.
 
 6. Ejecuta la aplicación con el siguiente comando desde la raíz del proyecto:
     ```bash
