@@ -1,0 +1,63 @@
+<header *ngIf="isLogged">
+    <p-toolbar styleClass="custom-toolbar">
+        <div class="p-toolbar-group-left">
+            <button
+                pButton
+                type="button"
+                icon="pi pi-bars"
+                class="p-button-secondary"
+                (click)="toggleSidebar()"
+                title="Abrir Menú"
+            >                
+            </button>
+            <span class="separator"></span>
+            <span class="app-title">reservation system </span>
+        </div>
+        <div class="p-toolbar-group-right">
+            <div class="user-avatar">
+                <p-avatar
+                    icon="pi pi-user"
+                    shape="circle"
+                    title="{{userName | titlecase}}"
+                >                    
+                </p-avatar>
+                <span class="label-usuario">{{userName | titlecase}}</span>
+            </div>
+            
+            <span class="separator"></span>
+            <div class="separator-y"></div>
+
+            <button
+                pButton
+                type="button"
+                class="p-button-secondary"
+                icon="pi pi-angle-down"
+                iconPos="left"
+                (click)="toggleDropdown()"
+                title="Opciones"
+                tooltipPosition="bottom"
+            >
+            </button>
+            <div class="dropdown-menu" [class.show]="dropdownVisible">
+                <button 
+                    class="dropdown-item"
+                    (click)="logout()"
+                >
+                    Sign out
+                </button>
+            </div>
+        </div>
+    </p-toolbar>
+</header>
+
+<p-sidebar [(visible)]="sidebarVisible" [baseZIndex]="10000" *ngIf="isLogged" position="left">
+    <div class="sidebar-header">
+        <h3>Navigation Menu</h3>        
+    </div>
+    <ul class="sidebar-menu">
+        <li><a routerLink="/reservation" routerLinkActive="active">Reservation</a></li>
+        <li><a routerLink="/history" routerLinkActive="active">History Reservation</a></li>
+        <li><a routerLink="/users" routerLinkActive="active">Users</a></li>
+        <li><a routerLink="/services" routerLinkActive="active">Spaces</a></li>
+    </ul>
+</p-sidebar>

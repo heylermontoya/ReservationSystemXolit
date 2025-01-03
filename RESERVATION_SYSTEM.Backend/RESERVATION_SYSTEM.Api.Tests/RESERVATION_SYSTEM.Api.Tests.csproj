@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <ProjectGuid>{19c0187d-529e-4464-9771-dae630616efb}</ProjectGuid>
+    <TargetFramework>net8.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>	  
+	  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+	  <PackageReference Include="xunit" Version="2.6.2" />
+	  <PackageReference Include="xunit.runner.visualstudio" Version="2.5.4">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="coverlet.collector" Version="6.0.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.6" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.6" />    
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RESERVATION_SYSTEM.Api\RESERVATION_SYSTEM.Api.csproj" />
+    <ProjectReference Include="..\RESERVATION_SYSTEM.Infrastructure\RESERVATION_SYSTEM.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>
