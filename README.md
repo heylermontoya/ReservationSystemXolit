@@ -2,7 +2,7 @@
 
 ## Descripción General
 
-Primero se va a realizar una breve descripción del desarrollo que se realizó en el **FrontEnd** y **BackEnd**, y después se describen las consideraciones a tener en cuenta para poner en funcionamiento el "Sistema de Reservas".
+Este documento proporciona una visión general del desarrollo realizado tanto en el **FrontEnd** como en el **BackEnd** del "Sistema de Reservas". A continuación, se detallan las consideraciones necesarias para poner en funcionamiento la aplicación, incluyendo los pasos para configurar el entorno. Finalmente, se explica cómo ejecutar las diferentes pruebas (unitarias, de integración y de mutación) y cómo ver los resultados de la cobertura de las pruebas realizadas.
 
 ---
 
@@ -153,3 +153,89 @@ Como datos adicionales, a continuacion se muestra un diagrama de la arquitectura
 
 [ver documentación de la api con swagger](./DocumentationWithSwaggerWebApi/DocumentationWithSwagger.json)
 
+
+---
+
+## Pasos para ejecutar y ver resultados de las diferentes pruebas
+
+---
+
+### Descripción BackEnd
+
+---
+
+#### Pruebas unitarias
+
+Este tipo de pruebas (unitarias) verifican de forma aislada el funcionamiento correcto de las unidades más pequeñas del código, como funciones o métodos en la capa de negocio, donde se encuentra la logica o reglas de negocio de la aplicación, en este caso la capa "Domain", asegurando que cumplan con su propósito esperado.
+
+para ejecutar las pruebas se debe ubicar en la ruta `RESERVATION_SYSTEM.Domain.Tests` y ejecutar el siguiente comando:
+
+```bash
+    dotnet test
+```
+
+Al final de ejecutar el comando se muestra un resumen de cuantas pruebas se ejecutaron y su estado.
+
+---
+
+#### Pruebas de mutación
+
+Este tipo de pruebas evalúan la calidad de las pruebas unitarias existentes modificando deliberadamente el código fuente (introduciendo "mutantes") y verificando si las pruebas detectan estos cambios. Si las pruebas no fallan con los mutantes, indica que podrían ser insuficientes o ineficaces.
+
+para ejecutar las pruebas se debe ubicar en la ruta `RESERVATION_SYSTEM.Domain.Tests` y ejecutar el siguiente comando:
+
+
+```bash
+    dotnet stryker
+```
+
+En caso de no tener instalada la herramienta de stryker, lo puede instalar con el siguiente comando:
+
+```bash
+    dotnet tool install --global dotnet-stryker
+```
+
+Al final de ejecutar las pruebas de mutación, se muestra el porcentaje de cobertura de pruebas de mutacion y se genera un informe html con el resultado de dichas pruebas.
+
+Para el caso de esta aplicación el porcentaje de cobertura de pruebas de mutación esta por encima del 80%
+
+---
+
+#### Pruebas de integración
+
+Este tipo de pruebas verifican que los módulos o componentes interactúen correctamente entre sí, asegurando que las dependencias, como bases de datos, APIs externas o servicios, funcionen de manera conjunta como se espera.
+
+Para el caso de esta aplicación, para ejecutar las pruebas de integración se uso una base de datos en memoria, para asi, probar la interación entre las diferentes capas de la aplicación.
+
+para ejecutar las pruebas se debe ubicar en la ruta `RESERVATION_SYSTEM.Api.Tests` y ejecutar el siguiente comando:
+
+
+```bash
+    dotnet test
+```
+
+Al final de ejecutar el comando se muestra un resumen de cuantas pruebas se ejecutaron y su estado.
+
+
+---
+
+### Descripción FrontEnd
+
+---
+
+#### Pruebas unitarias
+
+Las pruebas unitarias en Angular verifican, de manera aislada, el correcto funcionamiento de componentes, servicios, directivas u otros elementos del código. Sirven para garantizar que cada unidad cumpla con su propósito esperado sin depender de otras partes de la aplicación.
+
+
+para ejecutar las pruebas se debe ubicar en la carpeta raiz del proyecto del FrontEnd de la aplicación y ejecutar el siguiente comando:
+
+
+```bash
+    ng test --code-coverage --watch
+```
+
+Al final de ejecutar el comando se muestra un resumen de cuantas pruebas se ejecutaron y su estado.
+
+
+---
